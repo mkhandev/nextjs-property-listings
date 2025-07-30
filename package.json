@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cloudinary": "^2.7.0",
     "mongodb": "^6.18.0",
     "mongoose": "^8.16.5",
     "next": "15.4.4",

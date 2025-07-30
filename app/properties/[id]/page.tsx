@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
 import { Property as TProperty } from "@/types";
+import PropertyImages from "@/components/PropertyImages";
 
 const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
   const { id } = await props.params;
@@ -46,6 +47,8 @@ const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
           </div>
         </div>
       </section>
+
+      <PropertyImages images={property.images} />
     </>
   );
 };

@@ -22,8 +22,6 @@ export const authOptions: NextAuthOptions = {
     async signIn({ profile }) {
       if (!profile) return false;
 
-      console.log(profile);
-
       await connectDB();
       const userExists = await User.findOne({ email: profile.email });
 
@@ -31,7 +29,7 @@ export const authOptions: NextAuthOptions = {
         await User.create({
           username: profile.name,
           email: profile.email,
-          image: profile.picture,
+          image: (profile as any).picture,
         });
       }
 
