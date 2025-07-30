@@ -1,11 +1,16 @@
 import PropertyCard from "@/components/PropertyCard";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
-//import properties from "@/properties.json";
+import { Property as TProperty } from "@/types";
 
 const PropertiesPage = async () => {
   await connectDB();
-  const properties = await Property.find().lean();
+
+  const rawProperties = await Property.find().lean();
+  const properties: TProperty[] = rawProperties.map((property: any) => ({
+    ...property,
+    _id: property._id.toString(),
+  }));
 
   return (
     <div className="px-4 py-6">
@@ -14,8 +19,8 @@ const PropertiesPage = async () => {
           <p>No Properties Found</p>
         ) : (
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {properties.map((property) => (
-              <PropertyCard key={property._id} property={property} />
+            {properties.map((property, index) => (
+              <PropertyCard key={index} property={property} />
             ))}
           </div>
         )}

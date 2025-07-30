@@ -2,13 +2,21 @@ import Link from "next/link";
 import PropertyCard from "./PropertyCard";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
+import { Property as TProperty } from "@/types";
 
 const HomeProperties = async () => {
   await connectDB();
-  const recentProperties = await Property.find()
+  const rawRecentProperties = await Property.find()
     .sort({ createdAt: -1 })
     .limit(3)
     .lean();
+
+  const recentProperties: TProperty[] = rawRecentProperties.map(
+    (property: any) => ({
+      ...property,
+      _id: property._id.toString(),
+    })
+  );
 
   return (
     <>
@@ -21,8 +29,8 @@ const HomeProperties = async () => {
             {recentProperties.length === 0 ? (
               <p>No Properties Found</p>
             ) : (
-              recentProperties.map((property) => (
-                <PropertyCard key={property._id} property={property} />
+              recentProperties.map((property, index) => (
+                <PropertyCard key={index} property={property} />
               ))
             )}
           </div>
