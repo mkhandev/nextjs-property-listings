@@ -5,15 +5,29 @@ import Property, { IProperty } from "@/models/Property";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
+import { Property as TProperty } from "@/types";
+import PropertyImages from "@/components/PropertyImages";
+
 const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
   const { id } = await props.params;
 
   await connectDB();
-  const property = await Property.findById(id).lean<IProperty | null>();
+  const property = (await Property.findById(id).lean()) as TProperty | null;
+
+  if (!property) {
+    return (
+      <div className="container p-6 mx-auto">
+        <p className="text-xl text-red-600">Property not found.</p>
+        <Link href="/properties" className="text-blue-500 underline">
+          Go back to properties
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <>
-      <PropertyHeaderImage image={property?.images?.[0] ?? ""} />
+      <PropertyHeaderImage image={property.images?.[0]} />
 
       <section>
         <div className="container px-6 py-6 m-auto">
@@ -33,6 +47,8 @@ const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
           </div>
         </div>
       </section>
+
+      <PropertyImages images={property.images} />
     </>
   );
 };
