@@ -26,14 +26,11 @@ const Navbar = () => {
   const { data: session, status } = useSession();
   const profileImage = session?.user?.image;
 
-  console.log(session);
-
   const pathname = usePathname();
 
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders();
-      console.log(res);
 
       setProviders(res);
     };
@@ -205,6 +202,9 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex={-1}
                       id="user-menu-item-0"
+                      onClick={() => {
+                        setIsProfileMenu(false);
+                      }}
                     >
                       Your Profile
                     </Link>
@@ -214,6 +214,9 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex={-1}
                       id="user-menu-item-2"
+                      onClick={() => {
+                        setIsProfileMenu(false);
+                      }}
                     >
                       Saved Properties
                     </Link>

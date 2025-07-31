@@ -7,12 +7,14 @@ import { FaArrowLeft } from "react-icons/fa";
 
 import { Property as TProperty } from "@/types";
 import PropertyImages from "@/components/PropertyImages";
+import { convertToSerializeAbleObject } from "@/utils/convertToObject";
 
 const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
   const { id } = await props.params;
 
   await connectDB();
-  const property = (await Property.findById(id).lean()) as TProperty | null;
+  const propertyDoc = (await Property.findById(id).lean()) as TProperty | null;
+  const property = convertToSerializeAbleObject(propertyDoc);
 
   if (!property) {
     return (
