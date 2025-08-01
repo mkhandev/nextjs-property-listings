@@ -1,6 +1,7 @@
-import PropertyCard from "@/components/PropertyCard";
 import connectDB from "@/config/database";
+import Property from "@/models/Property";
 import User from "@/models/User";
+import PropertyCard from "@/components/PropertyCard";
 import { getSessionUser } from "@/utils/getSessionUser";
 
 const SavedPropertiesPage = async () => {
@@ -13,7 +14,6 @@ const SavedPropertiesPage = async () => {
 
   const { userId } = sessionUser;
 
-  // NOTE: here we can make one database query by using Model.populate
   const user = await User.findById(userId)
     .populate("bookmarks")
     .lean<{ bookmarks: any[] } | null>();
