@@ -8,6 +8,9 @@ import { FaArrowLeft } from "react-icons/fa";
 import { Property as TProperty } from "@/types";
 import PropertyImages from "@/components/PropertyImages";
 import { convertToSerializeAbleObject } from "@/utils/convertToObject";
+import BookmarkButton from "@/components/BookmarkButton";
+import ShareButtons from "@/components/ShareButtons";
+import PropertyContactForm from "@/components/PropertyContactForm";
 
 const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
   const { id } = await props.params;
@@ -46,6 +49,12 @@ const PropertyPage = async (props: { params: Promise<{ id: string }> }) => {
         <div className="container px-6 py-10 m-auto">
           <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-[70%_30%]">
             <PropertyDetails property={property} />
+
+            <aside className="space-y-4">
+              <BookmarkButton property={property} />
+              <ShareButtons property={property} />
+              <PropertyContactForm property={property} />
+            </aside>
           </div>
         </div>
       </section>

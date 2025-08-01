@@ -22,6 +22,18 @@ export const authOptions: NextAuthOptions = {
     async signIn({ profile }) {
       if (!profile) return false;
 
+      console.log(profile);
+
+      // try {
+      //   const geo = await fetch("https://ipapi.co/json/").then((res) =>
+      //     res.json()
+      //   );
+
+      //   console.log(geo);
+      // } catch (error) {
+      //   console.log(error);
+      // }
+
       await connectDB();
       const userExists = await User.findOne({ email: profile.email });
 

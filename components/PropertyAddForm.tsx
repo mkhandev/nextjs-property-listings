@@ -1,8 +1,21 @@
 "use client";
+import { useEffect, useState } from "react";
 
 import addProperty from "@/lib/actions/addProperty";
+import SubmitButton from "./SubmitButton";
 
 const PropertyAddForm = () => {
+  const [defaultCountry, setDefaultCountry] = useState("");
+
+  useEffect(() => {
+    fetch("/api/get-country")
+      .then((res) => res.json())
+      .then((data) => {
+        setDefaultCountry(data.country);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <form action={addProperty}>
       <h2 className="mb-6 text-3xl font-semibold text-center">Add Property</h2>
@@ -86,6 +99,36 @@ const PropertyAddForm = () => {
           name="location.zipcode"
           className="w-full px-3 py-2 mb-2 border rounded"
           placeholder="Zipcode"
+        />
+        <input
+          type="text"
+          id="country"
+          name="location.country"
+          className="w-full px-3 py-2 mb-2 border rounded"
+          placeholder="Country"
+          value={defaultCountry}
+          onChange={(e) => setDefaultCountry(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className="pb-4 pl-4 pr-4 mb-4 bg-blue-50">
+        <div className="pt-4 pb-4">
+          Add latitude and longitude for better google map
+        </div>
+        <input
+          type="text"
+          id="latitude"
+          name="location.latitude"
+          className="w-full px-3 py-2 mb-2 border rounded"
+          placeholder="Latitude"
+        />
+        <input
+          type="text"
+          id="longitude"
+          name="location.longitude"
+          className="w-full px-3 py-2 mb-2 border rounded"
+          placeholder="Longitude"
         />
       </div>
 
@@ -342,7 +385,7 @@ const PropertyAddForm = () => {
         <input
           type="text"
           id="seller_name"
-          name="seller_info.name."
+          name="seller_info.name"
           className="w-full px-3 py-2 border rounded"
           placeholder="Name"
         />
@@ -395,12 +438,7 @@ const PropertyAddForm = () => {
       </div>
 
       <div>
-        <button
-          className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          Add Property
-        </button>
+        <SubmitButton defaultText="Add Property" pendingText="Adding..." />
       </div>
     </form>
   );
