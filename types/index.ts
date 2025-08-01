@@ -9,6 +9,9 @@ export type Property = {
     city: string;
     state: string;
     zipcode: string;
+    country: string;
+    latitude: string;
+    longitude: string;
   };
   beds: number;
   baths: number;

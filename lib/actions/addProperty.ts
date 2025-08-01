@@ -34,6 +34,9 @@ const addProperty = async (formData: FormData) => {
       city: formData.get("location.city"),
       state: formData.get("location.state"),
       zipcode: formData.get("location.zipcode"),
+      country: formData.get("location.country"),
+      latitude: formData.get("location.latitude"),
+      longitude: formData.get("location.longitude"),
     },
     beds: formData.get("beds"),
     baths: formData.get("baths"),
@@ -42,7 +45,7 @@ const addProperty = async (formData: FormData) => {
     rates: {
       weekly: formData.get("rates.weekly"),
       monthly: formData.get("rates.monthly"),
-      nightly: formData.get("rates.nightly."),
+      nightly: formData.get("rates.nightly"),
     },
     seller_info: {
       name: formData.get("seller_info.name"),
