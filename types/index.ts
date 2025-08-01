@@ -5,13 +5,13 @@ export type Property = {
   type: string;
   description: string;
   location: {
-    street: string;
+    street?: string;
     city: string;
     state: string;
-    zipcode: string;
+    zipcode?: string;
     country: string;
-    latitude: string;
-    longitude: string;
+    latitude?: string;
+    longitude?: string;
   };
   beds: number;
   baths: number;

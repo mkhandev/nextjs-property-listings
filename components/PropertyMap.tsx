@@ -24,8 +24,8 @@ const PropertyMap = ({ property }: { property: Property }) => {
       const hasLatLng =
         property.location.latitude && property.location.longitude;
       if (hasLatLng) {
-        setLat(property.location.latitude);
-        setLng(property.location.longitude);
+        setLat(property.location.latitude as string);
+        setLng(property.location.longitude as string);
       } else {
         const apiKey = process.env.NEXT_PUBLIC_OPENCAGE_API_KEY;
         const encodedAddress = encodeURIComponent(
