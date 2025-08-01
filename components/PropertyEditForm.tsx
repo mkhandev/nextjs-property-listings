@@ -99,6 +99,37 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           placeholder="Zipcode"
           defaultValue={property.location.zipcode}
         />
+        <input
+          type="text"
+          id="country"
+          name="location.country"
+          className="w-full px-3 py-2 mb-2 border rounded"
+          placeholder="Country"
+          required
+          defaultValue={property.location.country}
+        />
+      </div>
+
+      <div className="pb-4 pl-4 pr-4 mb-4 bg-blue-50">
+        <div className="pt-4 pb-4">
+          Add latitude and longitude for better google map
+        </div>
+        <input
+          type="text"
+          id="latitude"
+          name="location.latitude"
+          className="w-full px-3 py-2 mb-2 border rounded"
+          placeholder="Latitude"
+          defaultValue={property.location.latitude}
+        />
+        <input
+          type="text"
+          id="longitude"
+          name="location.longitude"
+          className="w-full px-3 py-2 mb-2 border rounded"
+          placeholder="Longitude"
+          defaultValue={property.location.longitude}
+        />
       </div>
 
       <div className="flex flex-wrap mb-4">
@@ -377,7 +408,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
         <input
           type="text"
           id="seller_name"
-          name="seller_info.name."
+          name="seller_info.name"
           className="w-full px-3 py-2 border rounded"
           placeholder="Name"
           defaultValue={property.seller_info.name}

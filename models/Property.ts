@@ -2,9 +2,12 @@ import { Schema, model, models, Document, Types } from "mongoose";
 
 interface ILocation {
   street?: string;
-  city?: string;
-  state?: string;
+  city: string;
+  state: string;
   zipcode?: string;
+  country: string;
+  latitude?: string;
+  longitude?: string;
 }
 
 interface IRates {
@@ -24,7 +27,7 @@ export interface IProperty extends Document {
   name: string;
   type: string;
   description?: string;
-  location?: ILocation;
+  location: ILocation;
   beds: number;
   baths: number;
   square_feet: number;
@@ -60,6 +63,9 @@ const PropertySchema = new Schema<IProperty>(
       city: { type: String },
       state: { type: String },
       zipcode: { type: String },
+      country: { type: String, required: true },
+      latitude: { type: String },
+      longitude: { type: String },
     },
     beds: {
       type: Number,
