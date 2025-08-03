@@ -23,14 +23,16 @@ const PropertyCard = ({ property }: { property: Property }) => {
 
   return (
     <div className="relative shadow-md rounded-xl">
-      <Image
-        src={`${property.images[0]}`}
-        alt=""
-        width="0"
-        height="0"
-        sizes="100vw"
-        className="w-full h-auto rounded-t-xl"
-      />
+      <Link href={`/properties/${property._id}`}>
+        <Image
+          src={`${property.images[0]}`}
+          alt=""
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-full h-auto rounded-t-xl"
+        />
+      </Link>
       <div className="p-4">
         <div className="mb-6 text-left md:text-center lg:text-left">
           <div className="text-gray-600">{property.type}</div>
@@ -71,7 +73,6 @@ const PropertyCard = ({ property }: { property: Property }) => {
           <div className="flex gap-2 mb-4 align-middle lg:mb-0">
             <FaMapMarker className="mt-1 text-orange-700" />
             <span className="text-orange-700">
-              {" "}
               {property.location.city} {property.location.state}{" "}
             </span>
           </div>
