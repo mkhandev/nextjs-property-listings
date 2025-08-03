@@ -2,11 +2,30 @@ import connectDB from "@/config/database";
 import PropertyCard from "@/components/PropertyCard";
 import Property from "@/models/Property";
 import { Property as TProperty } from "@/types";
+import Pagination from "@/components/Pagination";
 
-const PropertiesPage = async () => {
+const PAGE_SIZE = 10;
+
+const PropertiesPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ page: string }>;
+}) => {
   await connectDB();
 
-  const rawProperties = await Property.find().lean();
+  const { page } = await searchParams;
+
+  const currentPage = Math.max(1, parseInt(page || "1"));
+  const skip = (currentPage - 1) * PAGE_SIZE;
+
+  const total = await Property.countDocuments();
+  const showPagination = total > PAGE_SIZE;
+
+  const rawProperties = await Property.find()
+    .skip(skip)
+    .limit(PAGE_SIZE)
+    .lean();
+  [];
   const properties: TProperty[] = rawProperties.map((property: any) => ({
     ...property,
     _id: property._id.toString(),
@@ -23,6 +42,14 @@ const PropertiesPage = async () => {
               <PropertyCard key={index} property={property} />
             ))}
           </div>
+        )}
+
+        {showPagination && (
+          <Pagination
+            page={currentPage}
+            pageSize={Number(PAGE_SIZE)}
+            totalItems={total}
+          />
         )}
       </div>
     </div>
