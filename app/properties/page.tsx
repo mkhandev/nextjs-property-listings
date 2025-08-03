@@ -1,5 +1,5 @@
-import PropertyCard from "@/components/PropertyCard";
 import connectDB from "@/config/database";
+import PropertyCard from "@/components/PropertyCard";
 import Property from "@/models/Property";
 import { Property as TProperty } from "@/types";
 

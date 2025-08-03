@@ -1,6 +1,6 @@
+import connectDB from "@/config/database";
 import PropertyDetails from "@/components/PropertyDetails";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
-import connectDB from "@/config/database";
 import Property, { IProperty } from "@/models/Property";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
