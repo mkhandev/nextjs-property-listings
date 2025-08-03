@@ -1,7 +1,7 @@
-import Link from "next/link";
-import PropertyCard from "./PropertyCard";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
+import Link from "next/link";
+import PropertyCard from "./PropertyCard";
 import { Property as TProperty } from "@/types";
 
 const HomeProperties = async () => {

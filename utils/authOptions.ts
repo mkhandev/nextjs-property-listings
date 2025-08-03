@@ -1,6 +1,6 @@
+import connectDB from "@/config/database";
 import GoogleProvider from "next-auth/providers/google";
 import type { NextAuthOptions } from "next-auth";
-import connectDB from "@/config/database";
 import User from "@/models/User";
 
 export const authOptions: NextAuthOptions = {
@@ -21,18 +21,6 @@ export const authOptions: NextAuthOptions = {
     // Invoked on successful signin
     async signIn({ profile }) {
       if (!profile) return false;
-
-      console.log(profile);
-
-      // try {
-      //   const geo = await fetch("https://ipapi.co/json/").then((res) =>
-      //     res.json()
-      //   );
-
-      //   console.log(geo);
-      // } catch (error) {
-      //   console.log(error);
-      // }
 
       await connectDB();
       const userExists = await User.findOne({ email: profile.email });

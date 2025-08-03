@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export type Property = {
   _id: string;
   owner: string;
@@ -31,4 +33,18 @@ export type Property = {
   is_featured: boolean;
   createdAt: string;
   updatedAt: string;
+};
+
+export type Message = {
+  _id?: Types.ObjectId | string;
+  sender: Types.ObjectId | string;
+  recipient: Types.ObjectId | string;
+  property: Types.ObjectId | string;
+  name: string;
+  email: string;
+  phone?: string;
+  body?: string;
+  read: boolean;
+  createdAt?: string | Date;
+  updatedAt?: string | Date;
 };

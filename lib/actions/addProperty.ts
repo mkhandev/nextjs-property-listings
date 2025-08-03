@@ -1,7 +1,7 @@
 "use server";
 
-import cloudinary from "@/config/cloudinary";
 import connectDB from "@/config/database";
+import cloudinary from "@/config/cloudinary";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
