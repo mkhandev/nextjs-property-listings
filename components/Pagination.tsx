@@ -24,8 +24,6 @@ const Pagination = ({ page, pageSize, totalItems }: PaginationProps) => {
   const isPrevDisabled = page <= 1;
   const isNextDisabled = page >= totalPages;
 
-  console.log(page, totalPages);
-
   return (
     <section className="container flex items-center justify-center gap-2 mx-auto my-8">
       <Link

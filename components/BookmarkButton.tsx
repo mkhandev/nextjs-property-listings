@@ -3,7 +3,6 @@
 import addBookmarkProperty from "@/lib/actions/addBookmarkProperty";
 import checkBookmarkStatus from "@/lib/actions/checkBookmarkStatus";
 import { Property } from "@/types";
-import { error } from "console";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FaBookmark } from "react-icons/fa";
@@ -43,7 +42,6 @@ const BookmarkButton = ({ property }: { property: Property }) => {
       setLoading(false);
       toast.success(res.message);
     } catch (error: any) {
-      console.error("Bookmark error:", error);
       toast.error("Something went wrong. Please try again.");
     }
   };
