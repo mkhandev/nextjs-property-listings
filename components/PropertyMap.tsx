@@ -9,9 +9,10 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 import Spinner from "./Spinner";
 
 import { geocode } from "opencage-api-client";
+import { isValidLatLng } from "@/utils/utility";
 
 const PropertyMap = ({ property }: { property: Property }) => {
-  const mapContainer = useRef(null);
+  const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
 
   const [lat, setLat] = useState<string | null>(null);
@@ -36,20 +37,20 @@ const PropertyMap = ({ property }: { property: Property }) => {
         const res = await fetch(url);
 
         if (!res.ok) {
-          throw new Error("Failed to fetch geocoding data");
+          setGeocodeError(true);
         }
 
         const data = await res.json();
 
         if (data.results.length === 0) {
           setGeocodeError(true);
-          setLoading(false);
         } else {
           const { lat, lng } = data.results[0].geometry;
           setLat(lat);
           setLng(lng);
         }
       }
+
       setLoading(false);
     };
 
@@ -58,27 +59,47 @@ const PropertyMap = ({ property }: { property: Property }) => {
 
   //google map
   useEffect(() => {
-    if (map.current) return;
-    if (!loading && lat !== null && lng !== null) {
+    if (!isValidLatLng(lat, lng)) {
+      setGeocodeError(true);
+      return;
+    }
+
+    // Delay to wait for DOM to be ready
+    const initMap = () => {
+      if (
+        !mapContainer.current ||
+        !(mapContainer.current instanceof HTMLElement)
+      ) {
+        requestAnimationFrame(initMap); // Try again on next frame
+        return;
+      }
+
       maptilersdk.config.apiKey = process.env
         .NEXT_PUBLIC_MAPTILER_API_KEY as string;
 
       map.current = new maptilersdk.Map({
-        container: mapContainer.current!,
+        container: mapContainer.current,
         style: maptilersdk.MapStyle.STREETS,
-        center: [parseFloat(lng), parseFloat(lat)],
+        center: [parseFloat(lng!), parseFloat(lat!)],
         zoom: 15,
       });
 
       new maptilersdk.Marker({ color: "#FF0000" })
-        .setLngLat([parseFloat(lng), parseFloat(lat)])
+        .setLngLat([parseFloat(lng!), parseFloat(lat!)])
         .addTo(map.current);
-    }
-  }, [lng, lat, loading]);
+    };
+
+    initMap();
+
+    return () => {
+      //Clean it up the map and reload next
+      map.current?.remove();
+    };
+  }, [lat, lng]);
 
   if (loading) return <Spinner loading={loading} />;
 
-  if (geocodeError) {
+  if (geocodeError && isValidLatLng(lat, lng) === false) {
     return <div className="text-xl">No location data found</div>;
   }
 
