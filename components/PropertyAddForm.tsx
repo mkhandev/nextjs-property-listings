@@ -12,8 +12,7 @@ const PropertyAddForm = () => {
       .then((res) => res.json())
       .then((data) => {
         setDefaultCountry(data.country);
-      })
-      .catch(console.error);
+      });
   }, []);
 
   return (
