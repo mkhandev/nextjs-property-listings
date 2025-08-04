@@ -47,8 +47,8 @@ const PropertyAddForm = () => {
           type="text"
           id="name"
           name="name"
-          className="w-full px-3 py-2 mb-2 border rounded"
-          placeholder="eg. Beautiful Apartment In Miami"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
+          placeholder="eg. Beautiful Apartment In New Work"
           required
         />
       </div>
@@ -62,7 +62,7 @@ const PropertyAddForm = () => {
         <textarea
           id="description"
           name="description"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           rows={4}
           placeholder="Add an optional description of your property"
         ></textarea>
@@ -74,14 +74,14 @@ const PropertyAddForm = () => {
           type="text"
           id="street"
           name="location.street"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Street"
         />
         <input
           type="text"
           id="city"
           name="location.city"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="City"
           required
         />
@@ -89,7 +89,7 @@ const PropertyAddForm = () => {
           type="text"
           id="state"
           name="location.state"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="State"
           required
         />
@@ -97,14 +97,14 @@ const PropertyAddForm = () => {
           type="text"
           id="zipcode"
           name="location.zipcode"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Zipcode"
         />
         <input
           type="text"
           id="country"
           name="location.country"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Country"
           value={defaultCountry}
           onChange={(e) => setDefaultCountry(e.target.value)}
@@ -117,18 +117,20 @@ const PropertyAddForm = () => {
           Add latitude and longitude for better google map
         </div>
         <input
-          type="text"
+          type="number"
           id="latitude"
           name="location.latitude"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Latitude"
+          step="any"
         />
         <input
-          type="text"
+          type="number"
           id="longitude"
           name="location.longitude"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Longitude"
+          step="any"
         />
       </div>
 
@@ -386,7 +388,7 @@ const PropertyAddForm = () => {
           type="text"
           id="seller_name"
           name="seller_info.name"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           placeholder="Name"
         />
       </div>
@@ -401,7 +403,7 @@ const PropertyAddForm = () => {
           type="email"
           id="seller_email"
           name="seller_info.email"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           placeholder="Email address"
           required
         />
@@ -417,7 +419,7 @@ const PropertyAddForm = () => {
           type="tel"
           id="seller_phone"
           name="seller_info.phone"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           placeholder="Phone"
         />
       </div>

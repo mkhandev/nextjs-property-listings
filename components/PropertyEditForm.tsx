@@ -40,8 +40,8 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="text"
           id="name"
           name="name"
-          className="w-full px-3 py-2 mb-2 border rounded"
-          placeholder="eg. Beautiful Apartment In Miami"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
+          placeholder="eg. Beautiful Apartment In New Work"
           required
           defaultValue={property.name}
         />
@@ -58,7 +58,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           name="description"
           className="w-full px-3 py-2 border rounded"
           rows={4}
-          placeholder="Add an optional description of your property"
+          placeholder="Add an optional description of your property placeholder-gray-400"
           defaultValue={property.description}
         ></textarea>
       </div>
@@ -69,7 +69,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="text"
           id="street"
           name="location.street"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Street"
           defaultValue={property.location.street}
         />
@@ -77,7 +77,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="text"
           id="city"
           name="location.city"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="City"
           required
           defaultValue={property.location.city}
@@ -86,7 +86,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="text"
           id="state"
           name="location.state"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="State"
           required
           defaultValue={property.location.state}
@@ -95,7 +95,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="text"
           id="zipcode"
           name="location.zipcode"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Zipcode"
           defaultValue={property.location.zipcode}
         />
@@ -115,20 +115,22 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           Add latitude and longitude for better google map
         </div>
         <input
-          type="text"
+          type="number"
           id="latitude"
           name="location.latitude"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Latitude"
           defaultValue={property.location.latitude}
+          step="any"
         />
         <input
-          type="text"
+          type="number"
           id="longitude"
           name="location.longitude"
-          className="w-full px-3 py-2 mb-2 border rounded"
+          className="w-full px-3 py-2 mb-2 placeholder-gray-400 border rounded"
           placeholder="Longitude"
           defaultValue={property.location.longitude}
+          step="any"
         />
       </div>
 
@@ -409,7 +411,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="text"
           id="seller_name"
           name="seller_info.name"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           placeholder="Name"
           defaultValue={property.seller_info.name}
         />
@@ -425,7 +427,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="email"
           id="seller_email"
           name="seller_info.email"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           placeholder="Email address"
           required
           defaultValue={property.seller_info.email}
@@ -442,7 +444,7 @@ const PropertyEditForm = ({ property }: { property: Property }) => {
           type="tel"
           id="seller_phone"
           name="seller_info.phone"
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 placeholder-gray-400 border rounded"
           placeholder="Phone"
           defaultValue={property.seller_info.phone}
         />
