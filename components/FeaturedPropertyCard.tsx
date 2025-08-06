@@ -32,7 +32,7 @@ const FeaturedPropertyCard = ({ property }: { property: Property }) => {
         sizes="100vw"
         className="object-cover w-full rounded-t-xl md:rounded-tr-none md:rounded-l-xl md:w-2/5"
       />
-      <div className="p-6">
+      <div className="w-full p-6">
         <h3 className="text-xl font-bold">{property.name}</h3>
         <div className="mb-4 text-gray-600">{property.type}</div>
         <h3 className="absolute top-[10px] left-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
