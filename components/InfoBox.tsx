@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { AiOutlinePropertySafety } from "react-icons/ai";
+import { FaRegUser } from "react-icons/fa";
 
 type InfoBoxProps = {
   heading: string;
@@ -20,7 +22,15 @@ const InfoBox = ({
 }: InfoBoxProps) => {
   return (
     <div className={`p-6 ${backgroundColor} rounded-lg shadow-md`}>
-      <h2 className="text-2xl font-bold">{heading}</h2>
+      <h2 className="flex items-center gap-2 text-2xl font-bold">
+        {heading == "For Rentals" ? (
+          <FaRegUser size={27} />
+        ) : (
+          <AiOutlinePropertySafety size={27} />
+        )}
+
+        {heading}
+      </h2>
       <p className="mt-2 mb-4">{children}</p>
       <Link
         href={buttonInfo.link}
