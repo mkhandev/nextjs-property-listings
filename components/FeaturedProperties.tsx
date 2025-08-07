@@ -16,9 +16,9 @@ const FeaturedProperties = async () => {
   }));
 
   return properties.length > 0 ? (
-    <section className="px-4 pt-6 pb-10 bg-blue-50">
+    <section className="px-4 pt-6 pb-10 bg-[#eceae8]">
       <div className="m-auto container-xl lg:container">
-        <h2 className="mb-6 text-3xl font-bold text-center text-blue-500">
+        <h2 className="mb-6 text-3xl font-bold text-center text-orange-400">
           Featured Properties
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

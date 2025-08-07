@@ -22,9 +22,12 @@ export default function RootLayout({
     <AuthProvider>
       <GlobalProvider>
         <html lang="en" suppressHydrationWarning>
-          <body suppressHydrationWarning>
+          <body
+            suppressHydrationWarning
+            className="bg-[#FCF8EF] min-h-screen flex flex-col"
+          >
             <Navbar />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
             <Footer />
             <ToastContainer />
           </body>

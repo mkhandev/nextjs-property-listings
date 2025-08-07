@@ -9,7 +9,7 @@ const override = {
 const LoadingPage = () => {
   return (
     <PuffLoader
-      color="#3b82f6"
+      color="#F86929"
       cssOverride={override}
       size={150}
       aria-label="Loading Spinner"
