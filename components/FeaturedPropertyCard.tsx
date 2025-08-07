@@ -24,32 +24,34 @@ const FeaturedPropertyCard = ({ property }: { property: Property }) => {
 
   return (
     <div className="relative flex flex-col bg-white shadow-md rounded-xl md:flex-row">
-      <Image
-        src={property.images[0]}
-        alt=""
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="object-cover w-full rounded-t-xl md:rounded-tr-none md:rounded-l-xl md:w-2/5"
-      />
-      <div className="w-full p-6">
+      <Link href={`/properties/${property._id}`} className="block">
+        <Image
+          src={property.images[0]}
+          alt=""
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="object-cover w-full rounded-t-xl md:rounded-tr-none md:rounded-l-xl "
+        />
+      </Link>
+      <div className="w-full p-6 bg-white rounded-r-xl">
         <h3 className="text-xl font-bold">{property.name}</h3>
-        <div className="mb-4 text-gray-600">{property.type}</div>
-        <h3 className="absolute top-[10px] left-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
+        <div className="mb-4 text-orange-400">{property.type}</div>
+        <h3 className="absolute top-[10px] left-[10px] bg-white px-4 py-2 rounded-lg text-orange-500 font-bold text-right md:text-center lg:text-right">
           ${getRateDisplay()}
         </h3>
         <div className="flex justify-center gap-4 mb-4 text-gray-500">
           <p>
-            <FaBed className="inline-block mr-2" /> {property.beds}{" "}
+            <FaBed className="inline-block mr-2" /> {property.beds}
             <span className="md:hidden lg:inline">Beds</span>
           </p>
           <p>
-            <FaBath className="inline-block mr-2" /> {property.baths}{" "}
+            <FaBath className="inline-block mr-2" /> {property.baths}
             <span className="md:hidden lg:inline">Baths</span>
           </p>
           <p>
             <FaRulerCombined className="inline-block mr-2" />
-            {property.square_feet}{" "}
+            {property.square_feet}
             <span className="md:hidden lg:inline">sqft</span>
           </p>
         </div>
@@ -78,15 +80,15 @@ const FeaturedPropertyCard = ({ property }: { property: Property }) => {
 
         <div className="flex flex-col justify-between lg:flex-row">
           <div className="flex gap-2 mb-4 align-middle lg:mb-0">
-            <FaMapMarker className="text-lg text-orange-700" />
-            <span className="text-orange-700">
+            <FaMapMarker className="text-lg text-orange-500" />
+            <span className="text-orange-500">
               {" "}
               {property.location.city} {property.location.state}
             </span>
           </div>
           <Link
             href={`/properties/${property._id}`}
-            className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+            className="h-[36px] bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-lg text-center text-sm"
           >
             Details
           </Link>

@@ -15,6 +15,7 @@ import {
   ClientSafeProvider,
 } from "next-auth/react";
 import UnreadMessageCount from "./UnreadMessageCount";
+import { IoHomeOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenu] = useState(false);
@@ -40,7 +41,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-blue-700 border-b border-blue-500">
+    <nav className="bg-[#faf3e6] border-b border-[#FFF]">
+      {/* FEF9EF */}
       <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-20">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -75,10 +77,16 @@ const Navbar = () => {
           <div className="flex items-center justify-center flex-1 md:items-stretch md:justify-start">
             {/* <!-- Logo --> */}
             <Link className="flex items-center flex-shrink-0" href="/">
-              <Image className="w-auto h-10" src={logo} alt="PropertyPulse" />
+              {/* <Image
+                className="w-auto h-10"
+                src={logo}
+                alt="PropertyListings"
+              /> */}
 
-              <span className="hidden ml-2 text-2xl font-bold text-white md:block">
-                PropertyPulse
+              <IoHomeOutline size={45} style={{ color: "orange" }} />
+
+              <span className="hidden ml-2 text-2xl font-bold text-orange-400 md:block">
+                PropertyListings
               </span>
             </Link>
             {/* <!-- Desktop Menu Hidden below md screens --> */}
@@ -87,16 +95,16 @@ const Navbar = () => {
                 <Link
                   href="/"
                   className={`${
-                    pathname === "/" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/" ? "bg-orange-400 text-white" : ""
+                  } text-[#000] hover:bg-orange-400 hover:text-white rounded-md px-3 py-2`}
                 >
                   Home
                 </Link>
                 <Link
                   href="/properties"
                   className={`${
-                    pathname === "/properties" ? "bg-black" : ""
-                  } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/properties" ? "bg-orange-400 text-white" : ""
+                  } text-[#000] hover:bg-orange-400 hover:text-white rounded-md px-3 py-2`}
                 >
                   Properties
                 </Link>
@@ -105,8 +113,10 @@ const Navbar = () => {
                   <Link
                     href="/properties/add"
                     className={`${
-                      pathname === "/properties/add" ? "bg-black" : ""
-                    } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                      pathname === "/properties/add"
+                        ? "bg-orange-400 text-white"
+                        : ""
+                    } text-[#000] hover:bg-orange-400 hover:text-white rounded-md px-3 py-2`}
                   >
                     Add Property
                   </Link>
@@ -123,10 +133,10 @@ const Navbar = () => {
                   Object.values(providers).map((provider, index) => (
                     <button
                       key={index}
-                      className="flex items-center px-3 py-2 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white"
+                      className="cursor-pointer flex items-center px-3 py-2 text-[#FFF] bg-orange-400 rounded-md hover:bg-orange-500 hover:text-white"
                       onClick={() => signIn(provider.id)}
                     >
-                      <FaGoogle className="mr-2 text-white" />
+                      <FaGoogle className="mr-2 text-[#FFF]" />
                       <span>Login or Register</span>
                     </button>
                   ))}
@@ -140,7 +150,7 @@ const Navbar = () => {
               <Link href="/messages" className="relative group">
                 <button
                   type="button"
-                  className="relative p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative p-1 text-white bg-orange-400 rounded-full cursor-pointer hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-orange-500"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>
@@ -245,16 +255,18 @@ const Navbar = () => {
             <Link
               href="/"
               className={`${
-                pathname === "/" ? "bg-black" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/" ? "bg-orange-400 text-[#FFF]" : "text-[#00]"
+              } block rounded-md px-3 py-2 text-base font-medium`}
             >
               Home
             </Link>
             <Link
               href="/properties"
               className={`${
-                pathname === "/properties" ? "bg-black" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/properties"
+                  ? "bg-orange-400 text-[#FFF]"
+                  : "text-[#000]"
+              }  block rounded-md px-3 py-2 text-base font-medium`}
             >
               Properties
             </Link>
@@ -262,14 +274,16 @@ const Navbar = () => {
             <Link
               href="/properties/add"
               className={`${
-                pathname === "/properties/add" ? "bg-black" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/properties/add"
+                  ? "bg-orange-400 text-[#FFF]"
+                  : "text-[#000]"
+              }  block rounded-md px-3 py-2 text-base font-medium`}
             >
               Add Property
             </Link>
             {!session && (
-              <button className="flex items-center px-3 py-2 my-5 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
-                <FaGoogle className="mr-2 text-white" />
+              <button className="flex items-center px-3 py-2 my-5 text-[#000] bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
+                <FaGoogle className="mr-2 text-[#000]" />
                 <span>Login or Register</span>
               </button>
             )}
