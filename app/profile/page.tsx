@@ -22,12 +22,12 @@ const page = async () => {
   const properties = propertiesDocs.map(convertToSerializeAbleObject);
 
   return (
-    <section className="bg-blue-50">
+    <section>
       <div className="container py-24 m-auto">
         <div className="px-6 py-8 m-4 mb-4 bg-white border rounded-md shadow-md md:m-0">
-          <h1 className="mb-4 text-3xl font-bold">Your Profile</h1>
+          <h1 className="mb-4 text-3xl font-bold">My Profile</h1>
           <div className="flex flex-col md:flex-row">
-            <div className="mx-20 mt-10 md:w-1/4">
+            <div className="mx-10 mt-10 md:w-1/4">
               <div className="mb-4">
                 <Image
                   className="w-32 h-32 mx-auto rounded-full md:h-48 md:w-48 md:mx-0"

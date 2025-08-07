@@ -24,9 +24,9 @@ const InfoBox = ({
     <div className={`p-6 ${backgroundColor} rounded-lg shadow-md`}>
       <h2 className="flex items-center gap-2 text-2xl font-bold">
         {heading == "For Rentals" ? (
-          <FaRegUser size={27} />
+          <FaRegUser style={{ color: "orangered" }} size={27} />
         ) : (
-          <AiOutlinePropertySafety size={27} />
+          <AiOutlinePropertySafety style={{ color: "orangered" }} size={27} />
         )}
 
         {heading}
@@ -34,7 +34,7 @@ const InfoBox = ({
       <p className="mt-2 mb-4">{children}</p>
       <Link
         href={buttonInfo.link}
-        className={`${buttonInfo.backgroundColor} inline-block px-4 py-2 text-white rounded-lg hover:bg-gray-70`}
+        className={`${buttonInfo.backgroundColor} inline-block px-4 py-2 text-white rounded-lg hover:bg-orange-500`}
       >
         {buttonInfo.text}
       </Link>

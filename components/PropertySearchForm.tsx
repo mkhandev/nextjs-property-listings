@@ -60,7 +60,7 @@ const PropertySearchForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full px-6 py-3 mt-4 text-white bg-blue-500 rounded-lg md:ml-4 md:mt-0 md:w-auto hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500"
+        className="w-full px-6 py-3 mt-4 text-orange-500 bg-white rounded-lg cursor-pointer md:ml-4 md:mt-0 md:w-auto focus:outline-none focus:ring"
       >
         Search
       </button>

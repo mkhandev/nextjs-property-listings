@@ -22,7 +22,7 @@ const HomeProperties = async () => {
     <>
       <section className="px-4 py-6">
         <div className="m-auto container-xl lg:container">
-          <h2 className="mb-6 text-3xl font-bold text-center text-blue-500">
+          <h2 className="mb-6 text-3xl font-bold text-center text-orange-400">
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -40,7 +40,7 @@ const HomeProperties = async () => {
       <section className="max-w-lg px-6 m-auto my-10">
         <Link
           href="/properties"
-          className="block px-6 py-4 text-center text-white bg-black rounded-xl hover:bg-gray-700"
+          className="block px-6 py-4 text-center text-white bg-orange-400 rounded-xl hover:bg-orange-500"
         >
           View All Properties
         </Link>

@@ -28,7 +28,7 @@ const Pagination = ({ page, pageSize, totalItems }: PaginationProps) => {
     <section className="container flex items-center justify-center gap-2 mx-auto my-8">
       <Link
         className={clsx(
-          "px-2 py-1 ml-2 border border-gray-300 rounded",
+          "px-2 py-1 ml-2 border border-gray-300 rounded ",
           isPrevDisabled && "pointer-events-none text-gray-400 border-gray-200"
         )}
         href={isPrevDisabled ? "#" : `/properties?page=${page - 1}`}
@@ -41,9 +41,9 @@ const Pagination = ({ page, pageSize, totalItems }: PaginationProps) => {
         <Link
           key={link}
           href={`?page=${link}`}
-          className={`px-3 py-1 rounded ${
+          className={`px-3 py-1 rounded border border-gray-300 ${
             page === link
-              ? "bg-blue-600 text-white"
+              ? "bg-orange-400 text-white"
               : "bg-gray-100 text-gray-800"
           }`}
         >
@@ -53,8 +53,8 @@ const Pagination = ({ page, pageSize, totalItems }: PaginationProps) => {
 
       <Link
         className={clsx(
-          "px-2 py-1 ml-2 border border-gray-300 rounded",
-          isNextDisabled && "pointer-events-none text-gray-400 border-gray-200"
+          "px-2 py-1 ml-2 border border-gray-300 rounded ",
+          isNextDisabled && "pointer-events-none text-gray-400 border-gray-200 "
         )}
         href={isNextDisabled ? "#" : `/properties?page=${page + 1}`}
         aria-disabled={true}
