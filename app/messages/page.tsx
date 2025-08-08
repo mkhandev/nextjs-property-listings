@@ -33,6 +33,8 @@ const MessagePage = async () => {
     return message;
   });
 
+  console.log(messages);
+
   return (
     <section className="bg-blue-50">
       <div className="container max-w-6xl py-24 m-auto">
