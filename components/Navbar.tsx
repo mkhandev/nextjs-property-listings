@@ -16,6 +16,7 @@ import {
 } from "next-auth/react";
 import UnreadMessageCount from "./UnreadMessageCount";
 import { IoHomeOutline } from "react-icons/io5";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenu] = useState(false);
@@ -123,6 +124,8 @@ const Navbar = () => {
                 )}
               </div>
             </div>
+
+            <LanguageSwitcher />
           </div>
 
           {/* <!-- Right Side Menu (Logged Out) --> */}

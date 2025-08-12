@@ -17,6 +17,7 @@
     "mongoose": "^8.16.5",
     "next": "15.4.4",
     "next-auth": "^4.24.11",
+    "next-intl": "^4.3.4",
     "opencage-api-client": "^2.0.0",
     "photoswipe": "^5.4.4",
     "react": "19.1.0",
